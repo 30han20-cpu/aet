@@ -4,6 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>العملاق ترافيل | Al Emlaq Travel (AET)</title>
+
+  <!-- PWA & Mobile App Meta -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#071A35" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="AET Travel" />
+  <link rel="apple-touch-icon" href="/icon-192.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1339,6 +1348,15 @@
       var $ = ml_jQuery || jQuery;
       $('.ml-subscribe-form-49126990 .row-success').show();
       $('.ml-subscribe-form-49126990 .row-form').hide();
+    }
+
+    // PWA Service Worker Registration
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch((err) => {
+          console.error('Service Worker registration failed:', err);
+        });
+      });
     }
   </script>
 
